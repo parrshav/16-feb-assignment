@@ -1,0 +1,78 @@
+MySql
+Assignment Questions 
+Assignment 
+Q1. What is a database? Differentiate between SQL and NoSQL databases. 
+A database is a structured collection of data that is organized and managed for efficient storage, retrieval, and manipulation.
+Data Model:
+SQL databases: Follow a structured, tabular data model known as a relational model. Data is organized into tables with predefined schemas, and relationships between tables are established using primary and foreign keys.
+NoSQL databases: Embrace various data models, including document-oriented, key-value, columnar, and graph-based models. They offer more flexibility in storing unstructured or semi-structured data.
+Scalability:
+SQL databases: Primarily scale vertically by increasing the hardware resources of a single server to handle more data and traffic
+           NoSQL databases: Often designed to scale horizontally by distributing data across multiple servers in a cluster
+
+Q2. What is DDL? Explain why CREATE, DROP, ALTER, and TRUNCATE are used with an example.    
+DDL stands for Data Definition Language. It is a subset of SQL (Structured Query Language) used to define and manage the structure of a database and its objects. DDL statements are used to create, modify, and delete database objects such as tables, indexes, views, and constraints.
+CREATE: The CREATE statement is used to create new database objects, such as tables, views, indexes, or constraints. It allows you to define the structure and properties of the object. 
+CREATE TABLE employees (
+  id INT,
+  name VARCHAR(50),
+  age INT
+);
+DROP: The DROP statement is used to remove existing database objects from the database. It permanently deletes the specified object and all associated data
+DROP TABLE employees;
+ALTER: The ALTER statement is used to modify the structure of an existing database object. It allows you to add, modify, or remove columns, constraints, and other properties of the object
+ALTER TABLE employees
+ADD COLUMN salary DECIMAL(10, 2);
+
+TRUNCATE: The TRUNCATE statement is used to remove all rows from a table
+TRUNCATE TABLE employees;
+Q3. What is DML? Explain INSERT, UPDATE, and DELETE with an example. 
+
+Q4. What is DQL? Explain SELECT with an example. 
+DML stands for Data Manipulation Language, which is a subset of SQL used to manipulate data within a database.
+INSERT: The INSERT statement is used to add new records or rows into a table.
+INSERT INTO employees (id, name, age)
+VALUES (1, 'John Doe', 30);
+UPDATE: The UPDATE statement is used to modify existing records in a table.
+UPDATE employees
+SET age = 35
+WHERE id = 1;
+DELETE: The DELETE statement is used to remove one or more records from a table.
+DELETE FROM employees
+WHERE age > 40;
+Q5. Explain Primary Key and Foreign Key. 
+A primary key is a column or a combination of columns in a database table that uniquely identifies each row or record in that table
+A foreign key is a column or a set of columns in a database table that refers to the primary key of another table
+
+Q6. Write a python code to connect MySQL to python. Explain the cursor() and execute() method. 
+import mysql.connector
+conn = mysql.connector.connect(
+    host="localhost",
+    user="your_username",
+    password="your_password",
+    database="your_database"
+)
+cursor = conn.cursor()
+query = "SELECT * FROM your_table"
+cursor.execute(query)
+result = cursor.fetchall()
+for row in result:
+    print(row)
+cursor.close()
+conn.close()
+
+
+Q7. Give the order of execution of SQL clauses in an SQL query. 
+The order of execution of SQL clauses in an SQL query is as follows:
+FROM: Specifies the table or tables from which the data will be retrieved.
+JOIN: Specifies how tables are related to each other, allowing data to be combined from multiple tables.
+WHERE: Filters the rows based on a specified condition.
+GROUP BY: Groups the rows based on one or more columns.
+HAVING: Filters the groups based on a specified condition.
+SELECT: Specifies the columns to be retrieved from the tables.
+DISTINCT: Filters out duplicate rows from the result set.
+ORDER BY: Sorts the result set based on one or more columns.
+LIMIT/OFFSET: Limits the number of rows returned or specifies the starting point for the result set.
+
+Note: Create your assignment in Jupyter notebook and upload it to GitHub & share that GitHub repository   link through your dashboard. Make sure the repository is public. 
+Data Science Masters
